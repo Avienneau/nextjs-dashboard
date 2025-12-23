@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { generatePagination } from '@/app/lib/utils';
 import { usePathname, useSearchParams } from 'next/navigation';
 
-export default function Pagination({ totalPages }: { totalPages: number }) {
+export default function Pagination({ testid, totalPages }: { testid: string; totalPages: number }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const currentPage = Number(searchParams.get('page')) || 1;
@@ -24,6 +24,7 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
 
       {<div className="inline-flex">
         <PaginationArrow
+          testid={`${testid}-pagination-arrow`}
           direction="left"
           href={createPageURL(currentPage - 1)}
           isDisabled={currentPage <= 1}
@@ -40,6 +41,7 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
 
             return (
               <PaginationNumber
+                testid={`${testid}-pagination-${index}`}
                 key={`${page}-${index}`}
                 href={createPageURL(page)}
                 page={page}
@@ -51,6 +53,7 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
         </div>
 
         <PaginationArrow
+          testid={`${testid}-pagination-arrow`}
           direction="right"
           href={createPageURL(currentPage + 1)}
           isDisabled={currentPage >= totalPages}
@@ -61,11 +64,13 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
 }
 
 function PaginationNumber({
+  testid,
   page,
   href,
   isActive,
   position,
 }: {
+  testid: string;
   page: number | string;
   href: string;
   position?: 'first' | 'last' | 'middle' | 'single';
@@ -83,19 +88,21 @@ function PaginationNumber({
   );
 
   return isActive || position === 'middle' ? (
-    <div className={className}>{page}</div>
+    <div data-testid={`${testid}-pagination-number`} className={className}>{page}</div>
   ) : (
-    <Link href={href} className={className}>
+    <Link data-testid={`${testid}-pagination-number`} href={href} className={className}>
       {page}
     </Link>
   );
 }
 
 function PaginationArrow({
+  testid,
   href,
   direction,
   isDisabled,
 }: {
+  testid: string;
   href: string;
   direction: 'left' | 'right';
   isDisabled?: boolean;
@@ -112,15 +119,15 @@ function PaginationArrow({
 
   const icon =
     direction === 'left' ? (
-      <ArrowLeftIcon className="w-4" />
+      <ArrowLeftIcon data-testid={`${testid}-left`} className="w-4" />
     ) : (
-      <ArrowRightIcon className="w-4" />
+      <ArrowRightIcon data-testid={`${testid}-right`} className="w-4" />
     );
 
   return isDisabled ? (
     <div className={className}>{icon}</div>
   ) : (
-    <Link className={className} href={href}>
+    <Link data-testid={`${testid}-link`} className={className} href={href}>
       {icon}
     </Link>
   );
