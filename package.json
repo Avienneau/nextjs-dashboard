@@ -5,7 +5,9 @@
     "dev": "next dev --turbopack",
     "start": "next start",
     "lint": "eslint . ",
-    "test:ui": "npx playwright test --ui"
+    "test:ui": "npx playwright test --ui",
+    "test:setup": "npx playwright test --project setup",
+    "test": "npx playwright test"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
