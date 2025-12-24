@@ -36,6 +36,18 @@ export class LoginPage {
     await this.loginButton.click();
   }
 
+  formEmailInput() {
+    return this.emailInput;
+  }
+
+  formPasswordInput() {
+    return this.passwordInput;
+  }
+
+  formLoginButton() {
+    return this.loginButton;
+  }
+
   formErrorMessage() {
     return this.errorMessage;
   }
