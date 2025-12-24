@@ -21,6 +21,20 @@ jobs:
       run: pnpm exec playwright test
       env:
         AUTH_SECRET: ${{ secrets.AUTH_SECRET }}
+        AUTH_URL: ${{ secrets.AUTH_URL }}
+        NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+        NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+        POSTGRES_DATABASE: ${{ secrets.POSTGRES_DATABASE }}
+        POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+        POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+        POSTGRES_PRISMA_URL: ${{ secrets.POSTGRES_PRISMA_URL }}
+        POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
+        POSTGRES_URL_NON_POOLING: ${{ secrets.POSTGRES_URL_NON_POOLING }}
+        POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+        SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        SUPABASE_JWT_SECRET: ${{ secrets.SUPABASE_JWT_SECRET }}
+        SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
