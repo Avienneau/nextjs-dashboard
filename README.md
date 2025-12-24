@@ -35,7 +35,7 @@ run the development server
 pnpm dev
 ```
 
-pnpm can be downlaoded [here](https://pnpm.io/installation).
+pnpm can be downlaoded [here](https://pnpm.io/installation). The console will output the port on which the application is running on localhost.
 
 ### Local Test
 
