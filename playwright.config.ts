@@ -38,7 +38,7 @@ export default defineConfig({
     },
   ],
    webServer: {
-     command: 'pnpm run dev',
+     command: 'AUTH_SECRET=$AUTH_SECRET pnpm dev',
      url: 'http://localhost:3000',
      reuseExistingServer: !process.env.CI,
    },
